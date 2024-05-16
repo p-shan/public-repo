@@ -8,11 +8,18 @@ import org.apache.http.HttpResponse;
 
 public class HttpClientExample {
     public static void main(String[] args) {
+        if (args.length != 1) {
+            System.err.println("Usage: java HttpClientExample <url>");
+            System.exit(1);
+        }
+
+        String url = args[0];
+
         // Create an HttpClient instance
         HttpClient httpClient = HttpClients.createDefault();
         
         // Create an HttpGet request with the URL
-        HttpGet httpGet = new HttpGet("https://abc.com");
+        HttpGet httpGet = new HttpGet(url);
         
         try {
             // Execute the request
